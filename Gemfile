@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem "bootstrap-kaminari-views"
+gem "bootstrap-sass", "3.3.7"
 gem "coffee-rails", "~> 4.2"
 gem "config"
 gem "devise"
@@ -14,6 +15,7 @@ gem "font-awesome-rails"
 gem "i18n-js"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
+gem "jquery-turbolinks"
 gem "kaminari", "~> 1.1", ">= 1.1.1"
 gem "mysql2", ">= 0.3.18", "< 0.6.0"
 gem "puma", "~> 3.0"

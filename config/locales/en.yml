@@ -1,6 +1,9 @@
 en:
   layouts:
     header:
+      logout: "logout"
+      signup: "signup"
+      login: "login"
       book: "Book a Table"
       home: "Home"
       about: "About Us"
@@ -30,3 +33,12 @@ en:
       reservation: "Reservation"
       news: "News"
       contact Us: "Contact Us"
+  devise:
+    registrations:
+      new:
+        tittle: "Sign up"
+        button: "Signup now"
+    sessions:
+      new:
+        tittle: "Login"
+        button: "Login now"

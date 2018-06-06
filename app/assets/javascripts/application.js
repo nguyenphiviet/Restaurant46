@@ -1,6 +1,7 @@
+//= require bootstrap-sprockets
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require js/bootstrap.min
 //= require vendors/revolution/js/jquery.themepunch.tools.min
 //= require vendors/revolution/js/jquery.themepunch.revolution.min
@@ -17,3 +18,4 @@
 //= require vendors/countdown/jquery.countdown
 //= require vendors/js-calender/zabuto_calendar.min
 //= require js/theme
+//= require custom
