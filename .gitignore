@@ -4,6 +4,12 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+*.rbc
+capybara-*.html
+.rspec
+/log
+/tmp
+/test
 # Ignore bundler config.
 /.bundle
 
@@ -19,3 +25,10 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore application configuration
+/config/application.yml
+/config/database.yml
+/public/javascripts
+/public/uploads
+
