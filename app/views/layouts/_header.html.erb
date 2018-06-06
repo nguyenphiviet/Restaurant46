@@ -23,6 +23,12 @@
       <div class="col-md-4">
         <div class="header_social">
           <ul>
+            <% if user_signed_in? %>
+              <%= link_to t(".logout"), destroy_user_session_path, method: :delete %>
+            <% else %>
+              <%= link_to t(".signup"), new_user_registration_path %> |
+              <%= link_to t(".login"), new_user_session_path %>
+            <% end %>
             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
             <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
@@ -45,7 +51,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#"><img src="img/logo-1.png" alt=""></a>
+        <a class="navbar-brand" href="#"><%= image_tag("img/logo-1.png") %></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -68,3 +74,5 @@
     </div><!-- /.container-fluid -->
   </nav>
 </header>
+
+<section class="banner_area"></section>
