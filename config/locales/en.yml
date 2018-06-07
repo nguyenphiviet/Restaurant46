@@ -1,11 +1,17 @@
 en:
   order: "Order"
+  table: "Table"
   detail: "View detail"
   find_table: "Find table"
   home:
     index:
       book_table: "Book a table"
       enjoy_meal: "Enjoy your meal"
+  sort_price: "Sort by price"
+  home:
+    index:
+      book_table: "Book a table"
+      enjoy_meal: "Enjoy your meal!"
       lastest_dishes: "Lastest Dishes"
       popular_dishes: "Most popular dishes"
       today_menu: "Today's menu"

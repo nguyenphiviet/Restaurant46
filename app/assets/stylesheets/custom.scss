@@ -1,5 +1,5 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300");
 
 .first_header {
@@ -283,4 +283,18 @@
 
 .red-title{
   color: red;
+}
+
+.search-bar{
+  display: none;
+  right: 60px;
+  position: absolute;
+}
+
+.text-search{
+  width: 200px;
+}
+
+.event_btn{
+  margin-left: 30%;
 }

@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     sign_out: "logout", sign_up: "signup", edit: "profile"},
     controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :tables
+  resources :dishes
+  resources :categories
 end

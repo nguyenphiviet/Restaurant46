@@ -1,7 +1,9 @@
 class HomeController < ApplicationController
   def index
+    @q = Table.ransack params[:q]
     @lastest_dishes = Dish.lastest Settings.home.dish_popular_number
     @popular_dishes = Dish.most_popular_dishes
+    @supports = Supports::Home.new @lastest_dishes, @popular_dishes
   end
 
   def contact
