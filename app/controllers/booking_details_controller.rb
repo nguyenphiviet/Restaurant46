@@ -8,7 +8,6 @@ class BookingDetailsController < ApplicationController
       else
         session[:reservation]["detail"].merge!({dish.id.to_s => {"dish_name": dish.name, "dish_price": dish.price, "quantity": Settings.dish.default_quantity}})
       end
-      flash[:success] = t "order_dish_success"
       redirect_to carts_path
     else
       respond_to do |format|

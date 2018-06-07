@@ -3,6 +3,7 @@ class DishesController < ApplicationController
 
   def index
     @dishes = Dish.ransack(name_cont: params[:q]).result(distinct: true).limit(Settings.limit.autocomplete)
+    @dishes_search = Dish.ransack(name_cont: params[:q]).result
   end
 
   def show
