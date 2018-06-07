@@ -84,28 +84,8 @@
           </li>
           <li><a href="#"><%= t ".table" %></a></li>
           <li><a href="#"><%= t ".contact" %></a></li>
-          <!-- <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li> -->
           <li class="cart_view">
-            <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-            <ul class="option-cart-item">
-              <li>
-                <div class="cart-item">
-                  <div class="image"><img alt="Striped Belted Cami Romper - Purplish B" src="https://d3bro1z16yfjvi.cloudfront.net/images/importance_2.png?1349367920"></div>
-                  <div class="item-description">
-                    <p class="name">Striped Belted Cami Romper - Purplish B</p>
-                    <br>Quantity: <span class="light-red">2</span>
-                    <p></p>
-                  </div>
-                  <div class="right">
-                    <p class="price">$96,00</p>
-                    <p><a class="">remove</a></p>
-                  </div>
-                </div>
-              </li>
-              <li><span class="total">Total <strong>$96,00</strong></span>
-                <button class="checkout btn btn-success">Check Out</button>
-              </li>
-            </ul>
+            <%= render "carts/cartview" %>
           </li>
           <li class="search-btn"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
         </ul>
@@ -114,11 +94,11 @@
   </nav>
   <div class="search-bar">
     <%= form_with url: dishes_path, local: true, method: :get, html: {class: "form-inline"} do |f| %>
-      <div class="form-group">
-        <%= f.text_field :q, placeholder: t("search_dish"), data: {behavior: "autocomplete"}, class: "form-control" %>
+    <div class="form-group">
+      <%= f.text_field :q, placeholder: t("search_dish"), data: {behavior: "autocomplete"}, class: "form-control" %>
 
-        <%= f.button t("search"), class: "btn btn-success" %>
-      </div>
+      <%= f.button t("search"), class: "btn btn-success" %>
+    </div>
     <% end %>
   </div>
 </header>
