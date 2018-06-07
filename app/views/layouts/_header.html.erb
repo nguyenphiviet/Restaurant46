@@ -23,16 +23,31 @@
       <div class="col-md-4">
         <div class="header_social">
           <ul>
-            <% if user_signed_in? %>
-              <%= link_to t(".logout"), destroy_user_session_path, method: :delete %>
-            <% else %>
-              <%= link_to t(".signup"), new_user_registration_path %> |
+          <% if user_signed_in? %>
+            <%= link_to t(".logout"), destroy_user_session_path, method: :delete %>
+          <% else %>
+            <li class="header_social_text">
+              <%= link_to t(".signup"), new_user_registration_path %>
+            </li>
+            <li class="header_social_text">
               <%= link_to t(".login"), new_user_session_path %>
-            <% end %>
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="#"><i class="fa fa-rss"></i></a></li>
+            </li>
+            <li>
+              <%= link_to(user_google_oauth2_omniauth_authorize_path) do %>
+                <i class="fa fa-google-plus"></i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to(user_facebook_omniauth_authorize_path) do %>
+                <i class="fa fa-facebook"></i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to(user_twitter_omniauth_authorize_path) do %>
+                <i class="fa fa-twitter"></i>
+              <% end %>
+            </li>
+          <% end %>
           </ul>
         </div>
       </div>
@@ -75,4 +90,14 @@
   </nav>
 </header>
 
-<section class="banner_area"></section>
+<section class="banner_area">
+  <div class="container">
+    <div class="banner_content">
+      <a href="#">
+      <% flash.each do |message_type, message| %>
+        <%= content_tag :div, message, class: "alert alert-#{message_type}" %>
+      <% end %>
+      </a>
+    </div>
+  </div>
+</section>
