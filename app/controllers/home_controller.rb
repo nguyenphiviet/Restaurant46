@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+
   def index
     @q = Table.ransack params[:q]
     @lastest_dishes = Dish.lastest Settings.home.dish_popular_number
@@ -22,6 +23,7 @@ class HomeController < ApplicationController
   end
 
   private
+
   def contact_params
     params.require(:contact).permit :first_name, :last_name, :email,
       :subject, :message
