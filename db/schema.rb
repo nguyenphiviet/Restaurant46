@@ -132,7 +132,6 @@ ActiveRecord::Schema.define(version: 20180615044421) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "quantity"
     t.string "image"
   end
 
@@ -158,7 +157,6 @@ ActiveRecord::Schema.define(version: 20180615044421) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "uid", limit: 45
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
