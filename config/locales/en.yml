@@ -4,6 +4,7 @@ en:
   reserve_table: "Reserve table"
   detail: "View detail"
   find_table: "Find table"
+  search_dish: "Search dish..."
   home:
     index:
       book_table: "Book a table"
