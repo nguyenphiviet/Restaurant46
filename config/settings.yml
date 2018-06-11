@@ -1,3 +1,7 @@
 home:
   dish_popular_number: 8
   dish_lastest_number: 9
+follow_link:
+  facebook: "https://www.facebook.com/ngon.restaurants"
+  google: "https://plus.google.com/+FoodyVn"
+  twitter: "https://twitter.com/FoodyTV"

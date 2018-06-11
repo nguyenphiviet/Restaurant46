@@ -5,6 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-facebook"
+gem "omniauth-twitter"
 gem "bootstrap-kaminari-views"
 gem "bootstrap-sass", "3.3.7"
 gem "coffee-rails", "~> 4.2"

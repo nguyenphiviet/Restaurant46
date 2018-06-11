@@ -11,9 +11,9 @@ en:
       today_menu: "Today's menu"
   layouts:
     header:
-      logout: "logout"
-      signup: "signup"
-      login: "login"
+      logout: "Logout"
+      signup: "Signup"
+      login: "Login"
       book: "Book a Table"
       home: "Home"
       about: "About Us"
@@ -48,7 +48,19 @@ en:
       new:
         tittle: "Sign up"
         button: "Signup now"
+        welcome: "welcome to register !"
+        email: "your email"
+        password: "Password"
+        password_confirm: "Password confirmation"
+        min_pass: "Password at least %{min_pass} characters minimum"
     sessions:
       new:
         tittle: "Login"
         button: "Login now"
+        welcome: "Welcome to login our website!"
+        link_google: "Login with Google+"
+        link_facebook: "Login with Facebook"
+        link_twitter: "Login with Twitter"
+        email: "Your email"
+        password: "Password"
+        fogot_password: "Forgot your password?"
