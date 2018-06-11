@@ -119,7 +119,6 @@ ActiveRecord::Schema.define(version: 20180611035601) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "quantity"
     t.string "image"
   end
 

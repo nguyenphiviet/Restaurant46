@@ -13,3 +13,5 @@ contact:
     max_length: 255
 paginate:
   table_perpage: 9
+dish:
+  image_size: [750, 380]
