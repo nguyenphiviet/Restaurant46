@@ -1,0 +1,105 @@
+<section class="blog_list_area">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row m0">
+          <div class="blog_details_inner">
+            <div class="blog_details_content">
+              <%= image_tag @table.image %>
+              <h3><%= t("table") %></h3>
+              <h4><%= t ".post_by" %> <a href="#"><%= t ".admin" %></a>
+                <%= t ".at" %> <%= @table.created_at.strftime("%d %b, %Y") %>
+              </h4>
+              <%= @table.description.html_safe %>
+            </div>
+
+            <div class="blog_details_tags_area">
+              <div class="pull-right">
+                <h4><%= t ".share" %> :</h4>
+                <ul class="social_icon2">
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="comment_list_area">
+              <div class="fb-comments" data-href="<%= table_url(id: @table) %>" data-numposts="5" data-width="768"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="blog_right_sidebar">
+          <aside class="right_widget search_widget">
+            <div class="input-group">
+              <input type="text" class="form-control">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </aside>
+          <aside class="right_widget category_widget">
+            <div class="sidebar_title">
+              <h3><%= t ".reserve_table" %></h3>
+            </div>
+            <div>
+              <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><%= t "reserve_table_now" %></button>
+
+              <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h3 class="modal-title"><%= t("table") %></h3>
+                    </div>
+                    <div class="modal-body">
+                      <h3><%= t "choose_your_datetime" %></h3>
+                      <%= form_for @booking do |f| %>
+                      <div class="col-sm-6">
+                        <%= f.datetime_field :time_start, class: "form-control" %>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <%= f.submit t("reserve_table"), class: "btn btn-primary submit_btn" %>
+                      </div>
+                      <% end %>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal"><%= t "close" %></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </aside>
+          <aside class="right_widget calender_widget">
+           <div class="sidebar_title">
+            <h3><%= t ".calendar" %></h3>
+          </div>
+          <div id="my-calendar"></div>
+        </aside>
+        <aside class="right_widget recent_widget">
+          <div class="sidebar_title">
+            <h3><%= t ".recent_review" %></h3>
+          </div>
+          <div class="media">
+            <div class="media-left">
+              <%= image_tag "img/blog/recent-post/recent-post-1.jpg" %>
+            </div>
+            <div class="media-body">
+              <a href="#"><h4><%= t ".review_name" %></h4></a>
+              <h5><%= t ".review_create_at" %></h5>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div id="fb-root"></div>

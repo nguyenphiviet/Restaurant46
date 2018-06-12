@@ -1,6 +1,7 @@
 en:
   order: "Order"
   table: "Table"
+  reserve_table: "Reserve table"
   detail: "View detail"
   find_table: "Find table"
   home:

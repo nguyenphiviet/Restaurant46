@@ -19,6 +19,5 @@
 //= require vendors/js-calender/zabuto_calendar.min
 //= require js/theme
 //= require custom
-//= require js/contact.js
 //= require toastr
-//= require_tree .
+//= require facebook_comment
