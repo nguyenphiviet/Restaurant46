@@ -6,7 +6,7 @@ module ApplicationHelper
     end
   end
 
-  def number_format number
+  def currency_format number
     number_to_currency(number, separator: ",", delimiter: ".")
   end
 end
