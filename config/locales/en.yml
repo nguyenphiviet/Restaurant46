@@ -93,3 +93,17 @@ en:
     send_contact:
         success: "Your text message sent successfully!"
         error: "Sorry! Message not sent. Something went wrong!"
+  dishes:
+    show:
+      post_by: "Posted by"
+      admin: "admin"
+      at: "at"
+      share: "Share"
+      comments: "COMMENTS"
+      categories: "Categories"
+      calendar: "Calendar"
+      recent_review: "RECENT REVIEWS"
+      review_name: "Tailgating with Simon's Cheese: Bratwurst and Sauerkraut Pizza Recipe."
+      review_create_at: "November 18, 2017"
+      cate_name: "Buffet and Smorgasbord"
+      cant_find: "can't find dish"

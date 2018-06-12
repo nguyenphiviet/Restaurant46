@@ -4,7 +4,9 @@
       <%= show_image dish %>
     </div>
     <div class="media-body">
-      <a href="#"><h3><%= dish.name %></h3></a>
+      <%= link_to dish do %>
+        <h3><%= dish.name %></h3>
+      <% end %>
       <h4><%= currency_format dish.price %></h4>
       <a class="read_mor_btn" href="#"><%= t "order" %></a>
       <a class="read_mor_btn" href="#"><%= t "detail" %></a>
