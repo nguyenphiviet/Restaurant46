@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   root "home#index"
   get "/contact", to: "home#contact"
   post "/contact", to: "home#send_contact"

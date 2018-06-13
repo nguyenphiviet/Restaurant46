@@ -70,6 +70,10 @@ en:
         email: "Your email"
         password: "Password"
         fogot_password: "Forgot your password?"
+  active_admin:
+    devise:
+      user_name:
+        title: "Account"
   home:
     contact:
       info: "CONTACT INFO"
