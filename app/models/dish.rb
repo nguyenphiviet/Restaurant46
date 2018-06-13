@@ -1,6 +1,8 @@
 class Dish < ApplicationRecord
   belongs_to :category
   has_many :images
+  accepts_nested_attributes_for :images,
+    reject_if: ->(attrs) {attrs["url"].blank?}
   has_many :booking_details
   has_many :ratings
   has_many :reviews

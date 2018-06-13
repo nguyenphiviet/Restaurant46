@@ -293,7 +293,8 @@ ActiveAdmin.setup do |config|
   #
   # config.on_unauthorized_access = :access_denied
   config.comments = false
-  config.default_per_page = 6
+  config.default_per_page = Settings.admin.list.per_page
   config.authorization_adapter = ActiveAdmin::CanCanAdapter
   config.cancan_ability_class = "Ability"
+  config.register_javascript "ckeditor/init.js"
 end

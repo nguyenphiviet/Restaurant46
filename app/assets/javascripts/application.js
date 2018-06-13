@@ -2,6 +2,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require active_admin
 //= require js/bootstrap.min
 //= require vendors/revolution/js/jquery.themepunch.tools.min
 //= require vendors/revolution/js/jquery.themepunch.revolution.min
@@ -23,3 +24,4 @@
 //= require facebook_comment
 //= require jquery.easy-autocomplete
 //= require search
+//= require ckeditor/init
