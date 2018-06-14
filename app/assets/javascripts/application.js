@@ -21,3 +21,5 @@
 //= require custom
 //= require toastr
 //= require facebook_comment
+//= require jquery.easy-autocomplete
+//= require search

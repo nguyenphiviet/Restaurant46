@@ -23,9 +23,9 @@
       <div class="col-md-4">
         <div class="header_social">
           <ul>
-          <% if user_signed_in? %>
+            <% if user_signed_in? %>
             <%= link_to t(".logout"), destroy_user_session_path, method: :delete %>
-          <% else %>
+            <% else %>
             <li class="header_social_text">
               <%= link_to t(".signup"), new_user_registration_path %>
             </li>
@@ -34,20 +34,20 @@
             </li>
             <li>
               <%= link_to(user_google_oauth2_omniauth_authorize_path) do %>
-                <i class="fa fa-google-plus"></i>
+              <i class="fa fa-google-plus"></i>
               <% end %>
             </li>
             <li>
               <%= link_to(user_facebook_omniauth_authorize_path) do %>
-                <i class="fa fa-facebook"></i>
+              <i class="fa fa-facebook"></i>
               <% end %>
             </li>
             <li>
               <%= link_to(user_twitter_omniauth_authorize_path) do %>
-                <i class="fa fa-twitter"></i>
+              <i class="fa fa-twitter"></i>
               <% end %>
             </li>
-          <% end %>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -79,23 +79,55 @@
               <li><a href="menu-list.html"><%= t ".menu_list" %></a></li>
             </ul>
           </li>
-          <li><a href="javascript:void();"><%= t ".table" %></a></li>
-          <li><a href="javascript:void();"><%= t ".contact" %></a></li>
+          <li><a href="#"><%= t ".table" %></a></li>
+          <li><a href="#"><%= t ".contact" %></a></li>
           <!-- <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li> -->
-          <li class="search-btn"><a href="javascript:void();"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+              <i class="fa fa-shopping-bag"></i>
+              <span class="badge">3</span>
+            </a>
+            <ul class="dropdown-menu cart-list">
+              <li>
+                <a href="#" class="photo"><img src="IMAGE_ADDRESS" class="cart-thumb" alt="" /></a>
+                <h6><a href="#">Delica omtantur </a></h6>
+                <p>2x - <span class="price">$99.99</span></p>
+              </li>
+              <li>
+                <a href="#" class="photo"><img src="IMAGE_ADDRESS" class="cart-thumb" alt="" /></a>
+                <h6><a href="#">Delica omtantur </a></h6>
+                <p>2x - <span class="price">$99.99</span></p>
+              </li>
+              -- More List --
+              <li class="total">
+                <span class="pull-right"><strong>Total</strong>: $0.00</span>
+                <a href="#" class="btn btn-default btn-cart">Cart</a>
+              </li>
+            </ul>
+          </li>
+          <li class="search-btn"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
         </ul>
       </div>
     </div>
   </nav>
+  <div class="search-bar">
+    <%= form_with url: dishes_path, local: true, method: :get, html: {class: "form-inline"} do |f| %>
+      <div class="form-group">
+        <%= f.text_field :q, placeholder: t("search_dish"), data: {behavior: "autocomplete"}, class: "form-control" %>
+
+        <%= f.button t("search"), class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
 </header>
 
 <section class="banner_area">
   <div class="container">
     <div class="banner_content">
       <a href="#">
-      <% flash.each do |message_type, message| %>
+        <% flash.each do |message_type, message| %>
         <%= content_tag :div, message, class: "alert alert-#{message_type}" %>
-      <% end %>
+        <% end %>
       </a>
     </div>
   </div>
