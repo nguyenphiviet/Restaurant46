@@ -133,6 +133,14 @@ en:
       cate_name: "Buffet and Smorgasbord"
       cant_find: "can't find dish"
   categories:
-    index:
+    show:
       all: "All"
       add_to_cart: "Add To Cart"
+      best_selling: "Top selling"
+      price_asc: "Ascending price"
+      price_desc: "Descending price"
+      name_asc: "Name A - Z"
+      name_desc: "Name Z - A"
+      newset: "New"
+      oldest: "Old"
+      price_range: "Price: "
