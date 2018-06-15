@@ -132,3 +132,7 @@ en:
       review_create_at: "November 18, 2017"
       cate_name: "Buffet and Smorgasbord"
       cant_find: "can't find dish"
+  categories:
+    index:
+      all: "All"
+      add_to_cart: "Add To Cart"

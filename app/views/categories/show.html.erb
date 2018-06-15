@@ -1,0 +1,57 @@
+<section class="most_popular_item_area menu_list_page">
+  <div class="container">
+
+    <div class="popular_filter">
+      <ul>
+        <li class="active" data-filter="*">
+          <%= link_to t(".all"), categories_path %>
+        </li>
+        <% if @categories %>
+          <% @categories.each do |category| %>
+          <li data-filter=".cate_<%= category.id %>">
+            <%= link_to category.name, category %>
+          </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="p_recype_item_main">
+      <div class="row p_recype_item_active">
+        <% if @dishes %>
+          <% @dishes.each do |dish| %>
+          <div class="col-md-6 cate_1">
+            <div class="media">
+              <div class="media-left">
+                <%= dish_image dish %>
+              </div>
+              <div class="media-body">
+                <a href="#"><h3><%= dish.name %></h3></a>
+                <h4><%= dish.price %></h4>
+                <%= truncate_html dish.description, Settings.dish.word_length %>
+                <a class="read_mor_btn" href="#"><%= t ".add_to_cart" %></a>
+                <ul>
+                <% Settings.dish.max_rate_point.times do |time| %>
+                  <% if time <= dish.rate_avg.round(0) %>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                  <% else %>
+                    <li><a href="#"><i class="fa fa-star black"></i></a></li>
+                  <% end %>
+                <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 pull-right">
+        <%= paginate @dishes, theme: "twitter-bootstrap-3" %>
+      </div>
+    </div>
+
+  </div>
+</section>
