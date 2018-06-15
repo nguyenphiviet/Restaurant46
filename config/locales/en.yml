@@ -2,6 +2,8 @@ en:
   order: "Order"
   table: "Table"
   reserve_table: "Reserve table"
+  reserved_table: "You reserved table successful! You can order dish for table now!"
+  reserved_table_again: "You already reserved a table, you can order dish now!"
   detail: "View detail"
   find_table: "Find table"
   search_dish: "Search dish..."

@@ -5,7 +5,7 @@
         <div class="row m0">
           <div class="blog_details_inner">
             <div class="blog_details_content">
-              <%= image_tag @table.image %>
+              <%= image_tag @table.image if @table.image %>
               <h3><%= t("table") %></h3>
               <h4><%= t ".post_by" %> <a href="#"><%= t ".admin" %></a>
                 <%= t ".at" %> <%= @table.created_at.strftime("%d %b, %Y") %>
@@ -46,8 +46,7 @@
               <h3><%= t ".reserve_table" %></h3>
             </div>
             <div>
-              <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><%= t "reserve_table_now" %></button>
-
+                <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><%= t "reserve_table_now" %></button>
               <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content">
@@ -57,12 +56,18 @@
                     </div>
                     <div class="modal-body">
                       <h3><%= t "choose_your_datetime" %></h3>
-                      <%= form_for @booking do |f| %>
-                      <div class="col-sm-6">
-                        <%= f.datetime_field :time_start, class: "form-control" %>
+                      <%= form_for :reservations, :url => { :controller => "reservations", :action => "create" }, :html => {:method => :post} do |f| %>
+                      <%= f.hidden_field :table_id, value: @table.id %>
+                      <div class="col-sm-4">
+                        <%= f.date_field :date_start, class: "form-control" %>
                       </div>
 
-                      <div class="col-sm-6">
+                      <div class="col-sm-4">
+                        <%= f.time_select :time_start%>
+                      </div>
+
+
+                      <div class="col-sm-4">
                         <%= f.submit t("reserve_table"), class: "btn btn-primary submit_btn" %>
                       </div>
                       <% end %>
