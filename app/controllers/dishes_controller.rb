@@ -7,7 +7,7 @@ class DishesController < ApplicationController
   end
 
   def show
-    @dish = Dish.find_by id: params[:id]
+    @dish = Dish.with_images.find_by id: params[:id]
     unless @dish
       flash[:danger] = t ".cant_find"
       redirect_to root_url
