@@ -76,6 +76,9 @@ en:
     devise:
       user_name:
         title: "Account"
+    resource:
+      new:
+        panel_title: "Category details"
   home:
     contact:
       info: "CONTACT INFO"
