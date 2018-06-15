@@ -24,6 +24,7 @@
 //= require facebook_comment
 //= require jquery.easy-autocomplete
 //= require search
+//= require filter
 //= require ckeditor/init
 //= require i18n.js
 //= require i18n/translations
