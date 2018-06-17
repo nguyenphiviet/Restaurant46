@@ -95,6 +95,10 @@ en:
     resource:
       new:
         panel_title: "Category details"
+  admin:
+    dishes:
+      image_fields:
+        remove_image: "Remove!"
   home:
     contact:
       info: "CONTACT INFO"

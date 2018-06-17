@@ -9,6 +9,10 @@
   float: right;
 }
 
+.center {
+  text-align: center;
+}
+
 .cke_chrome {
   width: 79.5% !important;
   overflow: hidden;
@@ -32,4 +36,8 @@ table.index_table tr {
 
 .download_links {
   font-size: 12px;
+}
+
+.hidden{
+  display: none;
 }

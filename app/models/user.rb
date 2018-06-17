@@ -2,7 +2,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
     :recoverable, :rememberable, :trackable, :validatable,
     :omniauthable, omniauth_providers: [:google_oauth2, :facebook, :twitter]
-  has_many :reviews, dependent: :destroy
   has_many :ratings, dependent: :destroy
   has_many :bookings, dependent: :destroy
   before_save {self.email = email.downcase}

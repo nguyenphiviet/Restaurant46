@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180615044421) do
+ActiveRecord::Schema.define(version: 20180620035929) do
 
   create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "user_name", default: "", null: false
@@ -116,11 +116,11 @@ ActiveRecord::Schema.define(version: 20180615044421) do
   create_table "reviews", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "content"
     t.integer "dish_id"
-    t.integer "user_id"
+    t.integer "admin_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["admin_user_id"], name: "index_reviews_on_admin_user_id"
     t.index ["dish_id"], name: "index_reviews_on_dish_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "tables", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -172,5 +172,5 @@ ActiveRecord::Schema.define(version: 20180615044421) do
   add_foreign_key "ratings", "dishes"
   add_foreign_key "ratings", "users"
   add_foreign_key "reviews", "dishes"
-  add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "users", column: "admin_user_id"
 end

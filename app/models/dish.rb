@@ -6,7 +6,7 @@ class Dish < ApplicationRecord
   include Elasticsearch::Model::Callbacks
   belongs_to :category
   has_many :images
-  accepts_nested_attributes_for :images,
+  accepts_nested_attributes_for :images, allow_destroy: true,
     reject_if: ->(attrs) {attrs["url"].blank?}
   has_many :booking_details
   has_many :ratings

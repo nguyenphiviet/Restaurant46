@@ -16,7 +16,9 @@ ActiveAdmin.register Dish do
     end
     column :category
     column :updated_at do |dish|
-      format_datetime dish.updated_at
+      div class: "center" do
+        format_datetime dish.updated_at
+      end
     end
 
     actions
@@ -50,19 +52,17 @@ ActiveAdmin.register Dish do
     end
   end
 
-  form do |f|
+  form html: {multipart: true} do |f|
     f.inputs do
       f.input :category
       f.input :name
       f.input :price
       f.input :description, as: :ckeditor
-      f.has_many :images do |item|
-        item.inputs do
-          item.input :url
-          item.input :_destroy
-        end
-        item.actions
+
+      div id: "images" do
+        render 'form', f: f
       end
+      # f.input :images, as: :file, input_html: { multiple: true }
     end
     f.actions
   end
