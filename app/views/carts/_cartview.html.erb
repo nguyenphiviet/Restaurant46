@@ -1,0 +1,37 @@
+<a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+<% if bookingdetails_exist? %>
+<ul class="option-cart-item">
+  <% current_cart["detail"].each do |key, value| %>
+  <li>
+    <div class="cart-item">
+      <div class="image"><img alt="Striped Belted Cami Romper - Purplish B" src="https://d3bro1z16yfjvi.cloudfront.net/images/importance_2.png?1349367920"></div>
+      <div class="item-description">
+        <p class="name"><%= value["dish_name"] %></p>
+        <br><%= t "quantity" %>: <span class="light-red"><%= value["quantity"] %></span>
+        <p></p>
+      </div>
+      <div class="right">
+        <p class="price"><%= currency_format value["dish_price"] %></p>
+        <p>
+          <%= link_to t("delete"), booking_details_path(id: value["dish_id"]), data: {confirm: t("confirm_delete") + "'#{value["dish_name"]}'"}, method: :delete, remote: true %>
+        </p>
+      </div>
+    </div>
+  </li>
+  <hr>
+  <% end %>
+  <li><span class="total"><%= t "total" %>: <strong><%= total_cart %></strong></span>
+    <button class="checkout btn btn-success"><%= t "check_out" %></button>
+  </li>
+</ul>
+<% else %>
+<ul class="option-cart-item">
+  <li>
+    <%= t ".empty_cartview" %>
+  </li>
+  <hr>
+  <li>
+    <span class="total"><%= t "total" %>: <strong>0</strong></span>
+  </li>
+</ul>
+<% end %>

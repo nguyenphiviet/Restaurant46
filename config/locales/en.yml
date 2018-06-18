@@ -1,12 +1,20 @@
 en:
   order: "Order"
   table: "Table"
+  check_out: "Check out"
+  delete: "Delete"
+  confirm_delete: "Are you sure to delete?"
   reserve_table: "Reserve table"
   reserved_table: "You reserved table successful! You can order dish for table now!"
   reserved_table_again: "You already reserved a table, you can order dish now!"
+  require_booktable: "Please book a table first!"
+  order_dish_success: "Order dish successfull!"
   detail: "View detail"
   find_table: "Find table"
   search_dish: "Search dish..."
+  booking_details:
+    create:
+      added: "order success!"
   home:
     index:
       book_table: "Book a table"
@@ -19,8 +27,13 @@ en:
       lastest_dishes: "Lastest Dishes"
       popular_dishes: "Most popular dishes"
       today_menu: "Today's menu"
+  carts:
+    index:
+      title: "Your cart"
   layouts:
     header:
+      total: "Total"
+      quantity: "Quantity"
       logout: "Logout"
       signup: "Signup"
       login: "Login"
@@ -33,6 +46,7 @@ en:
       gallery: "Gallery"
       table: "Table"
       contact: "Contact US"
+      empty_cartview: "you haven't choosen any dish yet!"
     footer:
       about: "ABOUT RedCayenne"
       welcome: "We're welcome!"

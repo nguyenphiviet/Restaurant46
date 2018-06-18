@@ -1,0 +1,12 @@
+<tr class = "bg-success">
+  <td><%= link_to item_detail["dish_name"], dish_path(id: item_id.to_i) %></td>
+  <td>
+    <input type="hidden" value="<%= item_id %>", class = "dish_id_update" %>
+    <input class="quantity" type="number" value="<%= item_detail["quantity"] %>" min="1" />
+  </td>
+  <td><%= currency_format item_detail["dish_price"].to_i %></td>
+  <td class="item-<%= item_id %>"><%= currency_format(total_price_item item_detail["dish_price"].to_i, item_detail["quantity"].to_i) %> </td>
+  <td>
+    <%= link_to t("delete"), cart_path(id: item_id.to_i), data: {confirm: t("confirm_delete") + "'#{item_detail["dish_name"]}'"}, method: :delete, remote: true, class: "btn btn-danger cart-item" %>
+  </td>
+</tr>

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="col-md-12" id="basket">
+    <div class="box">
+      <h1><%= t ".title" %></h1>
+      <% if current_cart.present? %>
+      <div class="table-responsive">
+        <table class="table table-warning">
+          <thead class = "blue-grey lighten-4">
+            <tr>
+              <th><%= t "dish" %></th>
+              <th><%= t "quantity" %></th>
+              <th><%= t "unit_price" %></th>
+              <th><%= t "total" %></th>
+            </tr>
+          </thead>
+          <tbody class="cart">
+            <% current_cart["detail"].each do |item_id, item_detail| %>
+              <%= render "carts/cart_item", item_id: item_id, item_detail: item_detail, show_total: true %>
+            <% end %>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th colspan="5"><%= t "total" %></th>
+              <th class="total"><%= total_cart %></th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="box-footer">
+        <div class="pull-left">
+          <a href="<%= root_path %>" class="btn btn-default"><i class="fa fa-chevron-left"></i><%= t ".continue_shopping" %></a>
+        </div>
+        <div class="pull-right">
+          <button class="btn btn-default"><i class="fa fa-trash-o"></i><%= t".delete_cart" %> </button>
+          <%= link_to t(".checkout"), "#", class: "btn btn-primary" %>
+        </div>
+      </div>
+      <% else %>
+      <div class="alert alert-warning">
+        <%= t".empty_cart" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

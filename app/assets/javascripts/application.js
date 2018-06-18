@@ -25,3 +25,5 @@
 //= require jquery.easy-autocomplete
 //= require search
 //= require ckeditor/init
+//= require i18n.js
+//= require i18n/translations

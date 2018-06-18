@@ -58,19 +58,20 @@
                       <h3><%= t "choose_your_datetime" %></h3>
                       <%= form_for :reservations, :url => { :controller => "reservations", :action => "create" }, :html => {:method => :post} do |f| %>
                       <%= f.hidden_field :table_id, value: @table.id %>
-                      <div class="col-sm-4">
+
+                      <div class="col-sm-3">
                         <%= f.date_field :date_start, class: "form-control" %>
                       </div>
 
-                      <div class="col-sm-4">
-                        <%= f.time_select :time_start%>
+                      <div class="col-sm-3">
+                         <%= f.time_select :time_start, { prompt: {hour: 'Choose hour', minute: 'Choose minute'}, minute_step: 1 }, { class: 'form-control' } %>
                       </div>
 
-
-                      <div class="col-sm-4">
+                      <div class="col-sm-3">
                         <%= f.submit t("reserve_table"), class: "btn btn-primary submit_btn" %>
                       </div>
                       <% end %>
+                      <hr><hr>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal"><%= t "close" %></button>

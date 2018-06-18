@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   resources :bookings
   resources :categories
   resources :reservations
+  resources :booking_details
+  resources :carts
 end
