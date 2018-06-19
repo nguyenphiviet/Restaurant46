@@ -8,12 +8,8 @@ class Dish < ApplicationRecord
   has_many :reviews
 
   scope :lastest, ->(number){order(created_at: :desc).limit(number).select(:id, :name, :price)}
-
-  def self.most_popular_dishes
-    dish_ids = "SELECT `booking_details`.`dish_id`
-                FROM booking_details
-                GROUP BY `booking_details`.`dish_id`
-                ORDER BY sum(booking_details.quantity) DESC"
-    Dish.where(id: dish_ids).select(:id, :name, :price).limit(Settings.home.dish_popular_number)
-  end
+  scope :most_popular_dishes,
+    ->{where(id: BookingDetail.most_popular_dishes).limit(Settings.home.dish_popular_number)}
+  scope :with_images, ->{includes :images}
 end
+

@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_action :load_categories, only: %i(index contact)
 
   def index
     @q = Table.ransack params[:q]
@@ -27,5 +28,9 @@ class HomeController < ApplicationController
   def contact_params
     params.require(:contact).permit :first_name, :last_name, :email,
       :subject, :message
+  end
+
+  def load_categories
+    @categories = Category.ordered_by_name
   end
 end

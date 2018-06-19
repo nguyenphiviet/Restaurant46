@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180613034718) do
+ActiveRecord::Schema.define(version: 20180615044421) do
 
   create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "user_name", default: "", null: false
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20180613034718) do
     t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "rate_avg", limit: 24
     t.index ["category_id"], name: "index_dishes_on_category_id"
   end
 
@@ -157,6 +158,7 @@ ActiveRecord::Schema.define(version: 20180613034718) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid", limit: 45
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

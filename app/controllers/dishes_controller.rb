@@ -1,5 +1,5 @@
 class DishesController < ApplicationController
-  before_action :load_categories, only: %i(show)
+  before_action :load_categories, only: %i(index show)
 
   def index
     @dishes = Dish.ransack(name_cont: params[:q]).result(distinct: true).limit(Settings.limit.autocomplete)
@@ -13,8 +13,6 @@ class DishesController < ApplicationController
       redirect_to root_url
     end
   end
-
-  private
 
   def load_categories
     @categories = Category.ordered_by_name
