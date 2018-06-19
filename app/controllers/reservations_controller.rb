@@ -9,7 +9,9 @@ class ReservationsController < ApplicationController
       time_start = date_start + " " + hour + ":" + minute
       session[:reservation].merge!({"table"=>{"table_id"=>params[:reservations][:table_id], "price"=>params[:reservations][:table_id],"time_start"=>time_start}})
       flash[:success] = t "reserved_table"
+      redirect_to dishes_path
+    else
+      flash[:success] = t "reserved_table_again"
     end
-     flash[:success] = t "reserved_table_again"
   end
 end
