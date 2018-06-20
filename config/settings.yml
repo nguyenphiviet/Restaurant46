@@ -22,10 +22,13 @@ dish:
   max_rate_point: 5
   default_quantity: 1
   autocomplete: 4
+  price_range:
+    min_price: 5000
+    max_price: 5000000
+    step_num: 5000
 currency_unit: "Đ"
 limit:
   autocomplete: 4
 admin:
   list:
     per_page: 6
-currency_unit: "Đ"

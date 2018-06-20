@@ -1,57 +1,116 @@
 <section class="most_popular_item_area menu_list_page">
   <div class="container">
-
-    <div class="popular_filter">
-      <ul>
-        <li class="active" data-filter="*">
-          <%= link_to t(".all"), categories_path %>
-        </li>
-        <% if @categories %>
-          <% @categories.each do |category| %>
-          <li data-filter=".cate_<%= category.id %>">
-            <%= link_to category.name, category %>
-          </li>
-          <% end %>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="p_recype_item_main">
-      <div class="row p_recype_item_active">
-        <% if @dishes %>
-          <% @dishes.each do |dish| %>
-          <div class="col-md-6 cate_1">
-            <div class="media">
-              <div class="media-left">
-                <%= dish_image dish %>
-              </div>
-              <div class="media-body">
-                <a href="#"><h3><%= dish.name %></h3></a>
-                <h4><%= dish.price %></h4>
-                <%= truncate_html dish.description, Settings.dish.word_length %>
-                <a class="read_mor_btn" href="#"><%= t ".add_to_cart" %></a>
-                <ul>
-                <% Settings.dish.max_rate_point.times do |time| %>
-                  <% if time <= dish.rate_avg.round(0) %>
-                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <% else %>
-                    <li><a href="#"><i class="fa fa-star black"></i></a></li>
-                  <% end %>
-                <% end %>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-
     <div class="row">
-      <div class="col-sm-6 pull-right">
-        <%= paginate @dishes, theme: "twitter-bootstrap-3" %>
-      </div>
-    </div>
 
+      <div class="col-sm-3">
+        <aside>
+          <div class="news-menu list-group">
+            <div class="menu-left-title">
+              <strong><%= t ".menu" %></strong>
+            </div>
+            <ul class="nav cssmenu">
+              <% if @categories %>
+              <% @categories.each do |category| %>
+                <% active = (category.id.to_s == params[:id].to_s) ? "active" : "" %>
+                <li class="<%= active %>">
+                  <%= link_to category.name, category %>
+                </li>
+              <% end %>
+            <% end %>
+            </ul>
+          </div>
+
+          <div class="sidebar_price list-group">
+            <div class="menu-left-title">
+              <strong><%= t ".price_range" %></strong>
+            </div>
+            <section class="range-slider text-center">
+              <%= text_field_tag("",
+                (params[:min_price] ? params[:min_price] : Settings.dish.price_range.min_price),
+                {min: Settings.dish.price_range.min_price,
+                  max: Settings.dish.price_range.max_price,
+                  step: Settings.dish.price_range.step_num,
+                  type: :range, class: "click-filter"})%>
+              <%= text_field_tag("",
+                (params[:max_price] ? params[:max_price] : Settings.dish.price_range.max_price),
+                {min: Settings.dish.price_range.min_price,
+                  max: Settings.dish.price_range.max_price,
+                  step: Settings.dish.price_range.step_num,
+                  type: :range, class: "click-filter"})%>
+              <br><br><br><span class="rangeValues"></span>
+            </section>
+
+          </div>
+        </aside>
+      </div>
+
+      <div class="col-sm-9">
+        <div class="filter_bar">
+          <%= form_tag category_path(params[:id]), :method => :get,
+            class: "form-inline" do %>
+
+            <div class="form-group">
+              <%= select_tag(:sort_by, options_for_select([
+                  [t(".best_selling"), :most_popular_dishes],
+                  [t(".price_asc"), :price_asc],
+                  [t(".price_desc"), :price_desc],
+                  [t(".name_asc"), :name_asc],
+                  [t(".name_desc"), :name_desc],
+                  [t(".newset"), :newest],
+                  [t(".oldest"), :oldest]
+                ], selected: (params[:sort_by] ? params[:sort_by] : :most_popular_dishes) ), class: "form-control click-filter") %>
+            </div>
+
+            <%= hidden_field_tag :min_price,
+              (params[:min_price] ? params[:min_price] : Settings.dish.price_range.min_price),
+              class: "form-control click-filter", id: "range_min_price" %>
+            <%= hidden_field_tag :max_price,
+              (params[:max_price] ? params[:max_price] : Settings.dish.price_range.max_price),
+              class: "form-control click-filter", id: "range_max_price" %>
+
+            <%= submit_tag "", id: "submit-filter", class: "btn hidden" %>
+          <% end %>
+        </div>
+
+        <div class="p_recype_item_main">
+          <div class="row p_recype_item_active">
+            <% if @dishes %>
+              <% @dishes.each do |dish| %>
+              <div class="col-md-6 cate_1">
+                <div class="media">
+                  <div class="media-left">
+                    <%= dish_image dish %>
+                  </div>
+                  <div class="media-body">
+                    <a href="#"><h3><%= dish.name %></h3></a>
+                    <h4><%= format_currency dish.price.to_i %></h4>
+                    <%= truncate_html dish.description, Settings.dish.word_length %>
+                    <a class="read_mor_btn" href="#"><%= t ".add_to_cart" %></a>
+                    <ul>
+                    <% Settings.dish.max_rate_point.times do |time| %>
+                      <% if time <= dish.rate_avg.round(0) %>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                      <% else %>
+                        <li><a href="#"><i class="fa fa-star black"></i></a></li>
+                      <% end %>
+                    <% end %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-sm-6 pull-right">
+          <%= paginate @dishes, theme: "twitter-bootstrap-3" %>
+        </div>
+      </div>
+
+
+
+
+    </div>
   </div>
 </section>
