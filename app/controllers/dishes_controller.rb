@@ -2,8 +2,8 @@ class DishesController < ApplicationController
   before_action :load_categories, only: %i(index show)
 
   def index
-    @dishes = Dish.ransack(name_cont: params[:q]).result(distinct: true).limit(Settings.limit.autocomplete)
-    @dishes_search = Dish.ransack(name_cont: params[:q]).result
+    @dishes = Dish.search_elastic(params[:q]).results
+    @dishes_search = Dish.search_elastic(params[:q]).results
   end
 
   def show
