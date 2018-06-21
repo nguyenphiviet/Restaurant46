@@ -1,9 +1,6 @@
 module ApplicationHelper
   def show_image dish
-    dish = Dish.find_by id: dish.id
-    if dish
-      image_tag(dish.images.first.url, class: "img-responsive") if dish.images.present?
-    end
+    image_tag(dish.images.first.url, class: "img-responsive") if dish.images.present?
   end
 
   def currency_format number
