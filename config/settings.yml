@@ -13,12 +13,14 @@ contact:
     max_length: 255
 paginate:
   table_perpage: 9
-  dish_perpage: 2
+  dish_perpage: 4
 dish:
   image_size: [750, 380]
   word_length: 5
   default_image: "img/recype/recype-1.jpg"
   img_sm_size: "112x130"
+  default_lastest_image: "img/menu-grid/Menu_Grid-1.jpg"
+  img_lastest_sizep: "360x320"
   max_rate_point: 5
   default_quantity: 1
   autocomplete: 4

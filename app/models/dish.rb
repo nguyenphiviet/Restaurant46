@@ -49,6 +49,9 @@ class Dish < ApplicationRecord
         },
         category: {
           only: [:name]
+        },
+        images: {
+          only: [:url]
         }
       }
     )
@@ -60,7 +63,7 @@ class Dish < ApplicationRecord
       multi_match: {
         query: query,
         type: "phrase_prefix",
-        fields: ['name^10', 'price', 'description', 'reviews.content', 'category.name']
+        fields: ['name^10', 'price', 'description', 'reviews.content', 'category.name', 'images.url']
       }
     }
   })

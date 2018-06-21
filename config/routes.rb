@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   post "/contact", to: "home#send_contact"
   devise_for :users, path: "", path_names: {sign_in: "login",
     sign_out: "logout", sign_up: "signup", edit: "profile"},
-    controllers: {omniauth_callbacks: "omniauth_callbacks"}
+    controllers: {omniauth_callbacks: "omniauth_callbacks",
+      sessions: "users/sessions"}
   resources :tables
   resources :dishes
   resources :bookings
