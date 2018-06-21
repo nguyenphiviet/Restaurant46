@@ -36,10 +36,10 @@ window.onload = function(){
 $( document ).ready(function() {
   $(".range-filter").change(function(){
     setTimeout(function(){
-      $("#submit-filter").click();
+      $("#filter_form").submit();
     },1000)
   });
   $(".click-filter").change(function(){
-      $("#submit-filter").click();
+    $("#filter_form").submit();
   });
 });

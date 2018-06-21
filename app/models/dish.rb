@@ -25,6 +25,9 @@ class Dish < ApplicationRecord
   scope :min_price, ->(min){where("price >= ?", min)}
   scope :max_price, ->(max){where("price <= ?", max)}
 
+  validates :price, presence: true, inclusion: Settings.dish.price_range.range,
+    numericality: {only_integer: true}
+
   settings index: {number_of_shards: 1} do
     mappings dynamic: "false" do
       indexes :name, analyzer: "english"

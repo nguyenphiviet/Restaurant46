@@ -47,7 +47,8 @@
       <div class="col-sm-9">
         <div class="filter_bar">
           <%= form_tag category_path(params[:id]), :method => :get,
-            class: "form-inline" do %>
+            enforce_utf8: false, class: "form-inline",
+            id: "filter_form" do %>
 
             <div class="form-group">
               <%= select_tag(:sort_by, options_for_select([
@@ -63,12 +64,11 @@
 
             <%= hidden_field_tag :min_price,
               (params[:min_price] ? params[:min_price] : Settings.dish.price_range.min_price),
-              class: "form-control click-filter", id: "range_min_price" %>
+              class: "form-control", id: "range_min_price" %>
             <%= hidden_field_tag :max_price,
               (params[:max_price] ? params[:max_price] : Settings.dish.price_range.max_price),
-              class: "form-control click-filter", id: "range_max_price" %>
+              class: "form-control", id: "range_max_price" %>
 
-            <%= submit_tag "", id: "submit-filter", class: "btn hidden" %>
           <% end %>
         </div>
 

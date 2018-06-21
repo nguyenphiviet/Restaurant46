@@ -23,10 +23,11 @@ dish:
   default_quantity: 1
   autocomplete: 4
   price_range:
-    min_price: 5000
-    max_price: 5000000
-    step_num: 5000
-currency_unit: "Đ"
+    range: !ruby/range 0..5000
+    min_price: 0
+    max_price: 5000
+    step_num: 5
+currency_unit: "$"
 limit:
   autocomplete: 4
 admin:
