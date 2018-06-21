@@ -154,6 +154,8 @@ GEM
       multi_json
     erubi (1.7.1)
     execjs (2.7.0)
+    faker (1.8.7)
+      i18n (>= 0.7)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
@@ -216,7 +218,6 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mimemagic (0.3.2)
     mini_magick (4.8.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
@@ -254,12 +255,6 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     orm_adapter (0.5.0)
-    paperclip (6.0.0)
-      activemodel (>= 4.2.0)
-      activesupport (>= 4.2.0)
-      mime-types
-      mimemagic (~> 0.3.0)
-      terrapin (~> 0.6.0)
     parallel (1.12.1)
     parser (2.5.1.0)
       ast (~> 2.4.0)
@@ -375,6 +370,7 @@ DEPENDENCIES
   devise
   elasticsearch-model
   elasticsearch-rails
+  faker
   figaro
   font-awesome-rails
   html_truncator
@@ -390,7 +386,6 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-twitter
-  paperclip (~> 6.0.0)
   puma (~> 3.0)
   rails (~> 5.1.1)
   ransack!
