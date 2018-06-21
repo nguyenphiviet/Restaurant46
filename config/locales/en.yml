@@ -136,6 +136,7 @@ en:
       review_create_at: "November 18, 2017"
       cate_name: "Buffet and Smorgasbord"
       cant_find: "can't find dish"
+      title_share: "Common with Hot Food !!!"
   categories:
     show:
       all: "All"
