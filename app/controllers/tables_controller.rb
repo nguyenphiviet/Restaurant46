@@ -1,4 +1,5 @@
 class TablesController < ApplicationController
+  before_action :load_categories, only: %i(index show)
 
   def index
     @q = Table.ransack(params[:q])
@@ -11,5 +12,11 @@ class TablesController < ApplicationController
     return if @table
     flash[:danger] = t ".cant_find"
     redirect_to root_url
+  end
+
+  private
+
+  def load_categories
+    @categories = Category.ordered_by_name
   end
 end

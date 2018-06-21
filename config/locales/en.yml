@@ -14,6 +14,7 @@ en:
   reserved_table_again: "You already reserved a table, you can order dish now!"
   require_booktable: "Please book a table first!"
   order_dish_success: "Order dish successfull!"
+  order_dish: "Order dish"
   order_success: "Booking successfull!"
   detail: "View detail"
   hr: "________________________________________________________________________"
@@ -107,6 +108,7 @@ en:
     dishes:
       image_fields:
         remove_image: "Remove!"
+    reservation_today: "Reservations Today"
   home:
     contact:
       info: "CONTACT INFO"
@@ -145,6 +147,7 @@ en:
       cate_name: "Buffet and Smorgasbord"
       cant_find: "can't find dish"
       title_share: "Common with Hot Food !!!"
+      order_dish: "order this dish"
   categories:
     show:
       all: "All"

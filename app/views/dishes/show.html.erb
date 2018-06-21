@@ -41,6 +41,7 @@
               </span>
             </div>
           </aside>
+
           <aside class="right_widget category_widget">
             <div class="sidebar_title">
               <h3><%= t ".categories" %></h3>
@@ -56,30 +57,42 @@
               <% end %>
             </ul>
           </aside>
-          <aside>
-            <%= link_to t("order_dish"), booking_details_path(dish_id: @dish.id),
-            method: :post, class: "btn btn-primary" %>
+
+          <aside class="right_widget category_widget">
+            <div class="sidebar_title">
+              <h3>
+                <%= link_to t(".order_dish"),
+                  booking_details_path(dish_id: @dish.id),
+                  method: :post, class: "btn btn-primary full-with" %>
+              </h3>
+            </div>
           </aside>
+
+          <!-- <aside class="right_widget weather_widget">
+            <iframe frameborder="0" marginwidth="0" marginheight="0" src="http://thienduongweb.com/tool/weather/?r=0&w=1&g=0&col=1&d=0" width="100%" height="480" scrolling="no"></iframe>
+          </aside> -->
+
           <aside class="right_widget calender_widget">
-           <div class="sidebar_title">
-            <h3><%= t ".calendar" %></h3>
-          </div>
-          <div id="my-calendar"></div>
-        </aside>
-        <aside class="right_widget recent_widget">
-          <div class="sidebar_title">
-            <h3><%= t ".recent_review" %></h3>
-          </div>
-          <div class="media">
-            <div class="media-left">
-              <%= image_tag "img/blog/recent-post/recent-post-1.jpg" %>
+            <div class="sidebar_title">
+              <h3><%= t ".calendar" %></h3>
             </div>
-            <div class="media-body">
-              <a href="#"><h4><%= t ".review_name" %></h4></a>
-              <h5><%= t ".review_create_at" %></h5>
+            <div id="my-calendar"></div>
+          </aside>
+
+          <aside class="right_widget recent_widget">
+            <div class="sidebar_title">
+              <h3><%= t ".recent_review" %></h3>
             </div>
-          </div>
-        </aside>
+            <div class="media">
+              <div class="media-left">
+                <%= image_tag "img/blog/recent-post/recent-post-1.jpg" %>
+              </div>
+              <div class="media-body">
+                <h4><a href=""><%= t ".review_name" %></a></h4>
+                <h5><%= t ".review_create_at" %></h5>
+              </div>
+            </div>
+          </aside>
       </div>
     </div>
   </div>

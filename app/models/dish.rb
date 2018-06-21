@@ -5,12 +5,11 @@ class Dish < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   belongs_to :category
-  has_many :images
-  accepts_nested_attributes_for :images, allow_destroy: true,
-    reject_if: ->(attrs) {attrs["url"].blank?}
   has_many :booking_details
   has_many :ratings
   has_many :reviews
+  has_many :images
+  accepts_nested_attributes_for :images, allow_destroy: true
 
   scope :lastest, ->(number){order(created_at: :desc).limit(number).select(:id, :name, :price)}
   scope :most_popular_dishes,
@@ -33,8 +32,8 @@ class Dish < ApplicationRecord
       indexes :name, analyzer: "english"
       indexes :description, analyzer: "english"
       indexes :price
-      indexes "category.name", analyzer: "english"
-      indexes "reviews.content", analyzer: "english"
+      indexes "category_name", analyzer: "english"
+      indexes "reviews_content", analyzer: "english"
     end
   end
 
@@ -49,6 +48,9 @@ class Dish < ApplicationRecord
         },
         category: {
           only: [:name]
+        },
+        images: {
+          only: [:url]
         }
       }
     )
@@ -60,7 +62,7 @@ class Dish < ApplicationRecord
       multi_match: {
         query: query,
         type: "phrase_prefix",
-        fields: ['name^10', 'price', 'description', 'reviews.content', 'category.name']
+        fields: ['name^10', 'price', 'description', 'reviews.content', 'category.name', 'images.url']
       }
     }
   })

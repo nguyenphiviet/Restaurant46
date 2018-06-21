@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20180620035929) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
-    t.index ["slug"], name: "slug_UNIQUE", unique: true
+    t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
   create_table "contacts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -134,7 +134,6 @@ ActiveRecord::Schema.define(version: 20180620035929) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "quantity"
     t.string "image"
   end
 

@@ -1,10 +1,34 @@
 module ApplicationHelper
   def show_image dish
-    image_tag(dish.images.first.url, class: "img-responsive") if dish.images.present?
+    if dish.images.present?
+      image_tag dish.images.first.url.url,
+      size: Settings.dish.img_lastest_size, class: "img-responsive"
+    else
+      image_tag Settings.dish.default_lastest_image
+    end
+  end
+
+  def show_image_sm dish
+    if dish.images.present?
+      image_tag dish.images.first.url.url,
+      size: Settings.dish.img_sm_size, class: "img-responsive"
+    else
+      image_tag Settings.dish.default_image
+    end
+  end
+
+  def show_table_image table
+    if table.image.present?
+      image_tag table.image, class: "img-responsive"
+    else
+      image_tag Settings.table.default_image
+    end
   end
 
   def currency_format number
-    number_to_currency(number, separator: ",", delimiter: ".")
+    number_to_currency number,
+      precision: 0, unit: Settings.currency_unit,
+      separator: ",", delimiter: "."
   end
 
   def current_cart
@@ -30,7 +54,7 @@ module ApplicationHelper
   end
 
   def truncate_html html, limit
-    HTML_Truncator.truncate(html, limit).html_safe
+    HTML_Truncator.truncate(html, limit, :length_in_chars => true).html_safe
   end
 
   def dish_image dish

@@ -297,4 +297,16 @@ ActiveAdmin.setup do |config|
   config.authorization_adapter = ActiveAdmin::CanCanAdapter
   config.cancan_ability_class = "Ability"
   config.register_javascript "ckeditor/init.js"
+
+  config.namespace :admin do |admin|
+    admin.build_menu :utility_navigation do |menu|
+      menu.add label: I18n.t("admin.reservation_today"),
+        url: :admin_users_path,
+        html_options: {target: :blank}
+      admin.add_current_user_to_menu  menu
+      admin.add_logout_button_to_menu menu
+    end
+  end
+
+  # config.footer = render "admin/layouts/footer"
 end

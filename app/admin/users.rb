@@ -1,4 +1,6 @@
 ActiveAdmin.register User do
+  menu parent: "Customer"
+
   index do
     selectable_column
     id_column
