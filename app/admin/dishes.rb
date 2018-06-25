@@ -1,4 +1,6 @@
 ActiveAdmin.register Dish do
+  menu parent: "Dish"
+
   controller do
     def csv_filename
       "List dishes.csv"

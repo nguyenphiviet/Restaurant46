@@ -3,8 +3,13 @@
     <div class="feature_item_inner">
       <%= show_image dish %>
       <div class="icon_hover">
-        <i class="fa fa-search"></i>
-        <i class="fa fa-shopping-cart"></i>
+        <%= link_to dish do %>
+          <i class="fa fa-search"></i>
+        <% end %>
+        <%= link_to booking_details_path(dish_id: dish.id),
+          method: :post do %>
+          <i class="fa fa-shopping-cart"></i>
+        <% end %>
       </div>
     </div>
     <div class="title_text">

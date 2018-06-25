@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :check_user, only: :index
+  before_action :check_user, :load_categories, only: :index
 
   def index
     @bookings = current_user.bookings
@@ -28,5 +28,9 @@ class ReservationsController < ApplicationController
       flash[:info] = t "require_login"
       redirect_to new_user_session_path
     end
+  end
+
+  def load_categories
+    @categories = Category.ordered_by_name
   end
 end

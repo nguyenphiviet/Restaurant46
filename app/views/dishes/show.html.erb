@@ -5,11 +5,22 @@
         <div class="row m0">
           <div class="blog_details_inner">
             <div class="blog_details_content">
-              <%= show_image @dish %>
-              <h3><%= @dish.name %></h3>
-              <h4><%= t ".post_by" %> <a href="#"><%= t ".admin" %></a>
-                <%= t ".at" %> <%= @dish.created_at.strftime("%d %b, %Y") %>
-              </h4>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= show_image @dish %>
+                </div>
+                <div class="col-md-6">
+                  <h3><%= @dish.name %></h3>
+                  <h4><%= t ".post_by" %> <a href="#"><%= t ".admin" %></a>
+                    <%= t ".at" %> <%= @dish.created_at.strftime("%d %b, %Y") %>
+                  </h4>
+                  <h3>
+                    Price: <span class="red-title">
+                      <%= format_currency @dish.price %>
+                    </span>
+                  </h3>
+                </div>
+              </div>
               <%= @dish.description.html_safe %>
             </div>
 
@@ -33,14 +44,7 @@
       </div>
       <div class="col-md-4">
         <div class="blog_right_sidebar">
-          <aside class="right_widget search_widget">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </aside>
+
           <aside class="right_widget category_widget">
             <div class="sidebar_title">
               <h3><%= t ".categories" %></h3>
@@ -56,30 +60,17 @@
               <% end %>
             </ul>
           </aside>
-          <aside>
-            <%= link_to t("order_dish"), booking_details_path(dish_id: @dish.id),
-            method: :post, class: "btn btn-primary" %>
+
+          <aside class="right_widget category_widget">
+            <div class="sidebar_title">
+              <h3>
+                <%= link_to t(".order_dish"),
+                  booking_details_path(dish_id: @dish.id),
+                  method: :post, class: "btn btn-primary full-with" %>
+              </h3>
+            </div>
           </aside>
-          <aside class="right_widget calender_widget">
-           <div class="sidebar_title">
-            <h3><%= t ".calendar" %></h3>
-          </div>
-          <div id="my-calendar"></div>
-        </aside>
-        <aside class="right_widget recent_widget">
-          <div class="sidebar_title">
-            <h3><%= t ".recent_review" %></h3>
-          </div>
-          <div class="media">
-            <div class="media-left">
-              <%= image_tag "img/blog/recent-post/recent-post-1.jpg" %>
-            </div>
-            <div class="media-body">
-              <a href="#"><h4><%= t ".review_name" %></h4></a>
-              <h5><%= t ".review_create_at" %></h5>
-            </div>
-          </div>
-        </aside>
+
       </div>
     </div>
   </div>

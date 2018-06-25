@@ -11,8 +11,8 @@ function getVals(){
   }
 
   var displayElement = parent.getElementsByClassName("rangeValues")[0];
-      displayElement.innerHTML = numberWithCommas(slide1/1000) + " k - "
-        + numberWithCommas(slide2/1000) + " k";
+      displayElement.innerHTML = numberWithCommas(slide1) + " k - "
+        + numberWithCommas(slide2) + " k";
 
   // displayElement.innerHTML = "$ " + slide1 + "k - $" + slide2 + "k";
   document.getElementById("range_min_price").value = slide1;

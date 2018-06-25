@@ -420,3 +420,35 @@
   font-family: "Cantata One", serif;
   font-size: 18px;
 }
+
+.full-with{
+  width: 100%;
+}
+
+.p_recype_item_main{
+  .media .media-body {
+    h1, h2, h3 {
+      margin-top: 0px !important;
+      margin-bottom: 0px !important;
+    }
+  }
+
+}
+
+.cate_item {
+  .media .media-body {
+    h4, h5, h6 {
+      padding-top: 5px !important;
+      // margin-bottom: 0px !important;
+    }
+  }
+}
+.media .media-body .fa-star {
+  cursor: default;
+}
+
+.blog_details_inner .blog_details_content {
+  h3 {
+    padding-top: 0px;
+  }
+}
