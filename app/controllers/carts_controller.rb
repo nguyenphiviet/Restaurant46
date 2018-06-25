@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  before_action :load_categories, only: %i(index)
 
   def index; end
 
@@ -18,5 +19,11 @@ class CartsController < ApplicationController
       format.js
       format.html{redirect_to request.referrer}
     end
+  end
+
+  private
+
+  def load_categories
+    @categories = Category.ordered_by_name
   end
 end

@@ -1,21 +1,26 @@
 <div class="col-md-6 break snacks">
   <div class="media">
     <div class="media-left">
-      <%= show_image dish %>
+      <%= show_image_sm dish %>
     </div>
     <div class="media-body">
       <%= link_to dish do %>
         <h3><%= dish.name %></h3>
       <% end %>
       <h4><%= currency_format dish.price %></h4>
-      <a class="read_mor_btn" href="#"><%= t "order" %></a>
-      <a class="read_mor_btn" href="#"><%= t "detail" %></a>
+      <p><%= truncate_html dish.description, Settings.dish.word_length %></p>
+      <%= link_to t("order"),
+        booking_details_path(dish_id: dish.id),
+        method: :post, class: "read_mor_btn" %>
+      <%= link_to t("detail"), dish, {class: "read_mor_btn"} %>
       <ul>
-        <li><a href="#"><i class="fa fa-star"></i></a></li>
-        <li><a href="#"><i class="fa fa-star"></i></a></li>
-        <li><a href="#"><i class="fa fa-star"></i></a></li>
-        <li><a href="#"><i class="fa fa-star"></i></a></li>
-        <li><a href="#"><i class="fa fa-star-half-o"></i></a></li>
+        <% Settings.dish.max_rate_point.times do |time| %>
+          <% if time <= dish.rate_avg.round(0) %>
+            <li><a><i class="fa fa-star"></i></a></li>
+          <% else %>
+            <li><a><i class="fa fa-star black"></i></a></li>
+          <% end %>
+        <% end %>
       </ul>
     </div>
   </div>

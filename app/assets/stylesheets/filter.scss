@@ -89,6 +89,9 @@ section.range-slider {
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
   text-transform: uppercase;
+  li.active{
+    background: #FF793F;
+  }
 }
 .menu-left-title {
   font-size: 15px;

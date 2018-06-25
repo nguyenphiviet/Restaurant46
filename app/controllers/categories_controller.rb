@@ -43,6 +43,6 @@ class CategoriesController < ApplicationController
     sort_list = ["most_popular_dishes", "price_asc", "price_desc",
         "name_asc", "name_desc", "newest", "oldest"]
     return sort_by if sort_by.present? && sort_list.include?(sort_by)
-    return "most_popular_dishes"
+    return "newest"
   end
 end

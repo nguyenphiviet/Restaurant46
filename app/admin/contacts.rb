@@ -1,4 +1,8 @@
 ActiveAdmin.register Contact do
+  menu parent: "Customer"
+
+  actions :all, except: [:new, :edit, :create, :destroy]
+
   index do
     selectable_column
     column :name do |contact|

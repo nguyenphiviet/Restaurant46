@@ -11,7 +11,7 @@
             <ul class="nav cssmenu">
               <% if @categories %>
               <% @categories.each do |category| %>
-                <% active = (category.id.to_s == params[:id].to_s) ? "active" : "" %>
+                <% active = (category.slug.to_s == params[:id].to_s) ? "active" : "" %>
                 <li class="<%= active %>">
                   <%= link_to category.name, category %>
                 </li>
@@ -59,7 +59,7 @@
                   [t(".name_desc"), :name_desc],
                   [t(".newset"), :newest],
                   [t(".oldest"), :oldest]
-                ], selected: (params[:sort_by] ? params[:sort_by] : :most_popular_dishes) ), class: "form-control click-filter") %>
+                ], selected: (params[:sort_by] ? params[:sort_by] : :newest) ), class: "form-control click-filter") %>
             </div>
 
             <%= hidden_field_tag :min_price,
@@ -76,22 +76,27 @@
           <div class="row p_recype_item_active">
             <% if @dishes %>
               <% @dishes.each do |dish| %>
-              <div class="col-md-6 cate_1">
+              <div class="col-md-6 cate_item">
                 <div class="media">
                   <div class="media-left">
                     <%= dish_image dish %>
                   </div>
                   <div class="media-body">
-                    <a href="#"><h3><%= dish.name %></h3></a>
+                    <%= link_to dish do %>
+                      <h3><%= dish.name.truncate(Settings.dish.name.short) %></h3>
+                    <% end %>
                     <h4><%= format_currency dish.price.to_i %></h4>
-                    <%= truncate_html dish.description, Settings.dish.word_length %>
-                    <a class="read_mor_btn" href="#"><%= t ".add_to_cart" %></a>
+
+                    <p><%= truncate_html dish.description, Settings.dish.word_length %></p>
+                    <%= link_to t(".add_to_cart"),
+                      booking_details_path(dish_id: dish.id),
+                      method: :post, class: "read_mor_btn" %>
                     <ul>
                     <% Settings.dish.max_rate_point.times do |time| %>
                       <% if time <= dish.rate_avg.round(0) %>
-                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li><a><i class="fa fa-star"></i></a></li>
                       <% else %>
-                        <li><a href="#"><i class="fa fa-star black"></i></a></li>
+                        <li><a><i class="fa fa-star black"></i></a></li>
                       <% end %>
                     <% end %>
                     </ul>

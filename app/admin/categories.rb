@@ -1,4 +1,6 @@
 ActiveAdmin.register Category do
+  menu parent: "Dish"
+
   index do
     selectable_column
     id_column

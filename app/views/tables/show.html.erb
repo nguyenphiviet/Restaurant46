@@ -5,21 +5,12 @@
         <div class="row m0">
           <div class="blog_details_inner">
             <div class="blog_details_content">
-              <%= image_tag @table.image if @table.image %>
+              <%= table_image @table %>
               <h3><%= t("table") %></h3>
               <h4><%= t ".post_by" %> <a href="#"><%= t ".admin" %></a>
                 <%= t ".at" %> <%= @table.created_at.strftime("%d %b, %Y") %>
               </h4>
               <%= @table.description.html_safe %>
-            </div>
-
-            <div class="blog_details_tags_area">
-              <div class="pull-right">
-                <h4><%= t ".share" %> :</h4>
-                <ul class="social_icon2">
-                  <%= social_share_button_tag(@dish.name, :allow_sites => %w(twitter facebook google_plus)) %>
-                </ul>
-              </div>
             </div>
 
             <div class="comment_list_area">
@@ -30,14 +21,6 @@
       </div>
       <div class="col-md-4">
         <div class="blog_right_sidebar">
-          <aside class="right_widget search_widget">
-            <div class="input-group">
-              <input type="text" class="form-control">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </aside>
           <aside class="right_widget category_widget">
             <div class="sidebar_title">
               <h3><%= t ".reserve_table" %></h3>
