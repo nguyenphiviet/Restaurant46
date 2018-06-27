@@ -12,9 +12,8 @@ class Dish < ApplicationRecord
   has_many :ratings
   has_many :reviews
 
-  scope :lastest, ->(number){order(created_at: :desc).limit(number).select(:id, :name, :price)}
-  scope :most_popular_dishes,
-  ->{where(id: BookingDetail.most_popular_dishes).limit(Settings.home.dish_popular_number)}
+  scope :lastest, ->{order(created_at: :desc).select(:id, :name, :price)}
+  scope :most_popular_dishes,->{where(id: BookingDetail.most_popular_dishes)}
   scope :with_images, ->{includes :images}
   scope :newest, ->{order created_at: :desc}
   scope :oldest, ->{order created_at: :asc}
@@ -37,8 +36,6 @@ class Dish < ApplicationRecord
       indexes "reviews.content", analyzer: "english"
     end
   end
-
-  scope :lastest, ->(number){order(created_at: :desc).limit(number).select(:id, :name, :price)}
 
   def as_indexed_json(options = {})
     self.as_json(

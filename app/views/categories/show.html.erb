@@ -52,7 +52,6 @@
 
             <div class="form-group">
               <%= select_tag(:sort_by, options_for_select([
-                  [t(".best_selling"), :most_popular_dishes],
                   [t(".price_asc"), :price_asc],
                   [t(".price_desc"), :price_desc],
                   [t(".name_asc"), :name_asc],
@@ -60,6 +59,20 @@
                   [t(".newset"), :newest],
                   [t(".oldest"), :oldest]
                 ], selected: (params[:sort_by] ? params[:sort_by] : :newest) ), class: "form-control click-filter") %>
+            </div>
+
+            <div class="form-group">
+              <%= label_tag "tendency[]", t(".best_5_selling"), class: "form-control control-label"  %>
+              <%= check_box_tag "tendency[]", :most_popular_dishes,
+                params[:tendency] == "most_popular_dishes" ? true : false,
+                {class: "form-control check-filter hiddens"} %>
+            </div>
+
+            <div class="form-group">
+              <%= label_tag "tendency[]", t(".top_5_rating"), class: "form-control control-label"  %>
+              <%= check_box_tag "tendency[]", :top_rating,
+                params[:tendency] == "top_rating" ? true : false,
+                {class: "form-control check-filter hiddens"} %>
             </div>
 
             <%= hidden_field_tag :min_price,

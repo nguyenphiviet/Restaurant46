@@ -11,8 +11,8 @@ function getVals(){
   }
 
   var displayElement = parent.getElementsByClassName("rangeValues")[0];
-      displayElement.innerHTML = numberWithCommas(slide1) + " k - "
-        + numberWithCommas(slide2) + " k";
+      displayElement.innerHTML = numberWithCommas(slide1) + " $ - "
+        + numberWithCommas(slide2) + " $";
 
   // displayElement.innerHTML = "$ " + slide1 + "k - $" + slide2 + "k";
   document.getElementById("range_min_price").value = slide1;
@@ -42,4 +42,21 @@ $( document ).ready(function() {
   $(".click-filter").change(function(){
     $("#filter_form").submit();
   });
+
+  $("label[for='tendency_']").click(function(e) {
+    e.preventDefault();
+    $(this).parent().find("input[type='checkbox']").click();
+    alert(1);
+  });
+
+  $(".check-filter").click(function(){
+    if ($(this).prop( "checked" )){
+      $(this).parent().find("label[for='tendency_']").addClass("color-blue");
+    } else {
+      $(this).parent().find("label[for='tendency_']").removeClass("color-blue");
+    }
+    // $("#filter_form").submit();
+  });
+
+
 });

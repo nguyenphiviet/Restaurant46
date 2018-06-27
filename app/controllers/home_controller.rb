@@ -3,8 +3,8 @@ class HomeController < ApplicationController
 
   def index
     @q = Table.ransack params[:q]
-    @lastest_dishes = Dish.lastest Settings.home.dish_popular_number
-    @popular_dishes = Dish.most_popular_dishes
+    @lastest_dishes = Dish.lastest.page(params[:page]).per(Settings.home.dish_popular_number)
+    @popular_dishes = Dish.most_popular_dishes.page(params[:page]).per(Settings.home.dish_popular_number)
     @supports = Supports::Home.new @lastest_dishes, @popular_dishes
   end
 

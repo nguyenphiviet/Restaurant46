@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :load_categories, :filter_params, only: %i(show)
+  before_action :load_categories, only: %i(show)
 
   def index
     redirect_to category_path "all"
@@ -16,7 +16,10 @@ class CategoriesController < ApplicationController
       @category = Category.find params[:id]
       not_found_page unless @category
     end
-    params.permit(:id, :min_price, :max_price, :sort_by, :page)
+    params.permit :id, :min_price, :max_price, :sort_by,
+      :tendency, :page
+
+    # params.permit :id, :min_price, :max_price, :sort_by, {tendency: []}, :page
   end
 
   def load_categories
@@ -25,6 +28,9 @@ class CategoriesController < ApplicationController
 
   def load_dishes params
     result = (params[:id] == "all") ? Dish.with_images : @category.dishes.with_images
+
+    result = result.most_popular_dishes if
+      params[:tendency] == "most_popular_dishes"
 
     result = result.send get_scope_name(params[:sort_by])
 
@@ -40,7 +46,7 @@ class CategoriesController < ApplicationController
   end
 
   def get_scope_name sort_by
-    sort_list = ["most_popular_dishes", "price_asc", "price_desc",
+    sort_list = ["price_asc", "price_desc",
         "name_asc", "name_desc", "newest", "oldest"]
     return sort_by if sort_by.present? && sort_list.include?(sort_by)
     return "newest"
